@@ -1,3 +1,4 @@
-# Patterns Analysis Examples
+# Patterns Analysis 3710
 
-Chaos Game
+# To enter my python environment.
+source envs/my-patterns/bin/activate  

@@ -18,7 +18,8 @@ x = x.to(device)
 y = y.to(device)
 
 # Compute Gaussian
-z = torch.exp(-(x**2+y**2)/2.0)
+# z = torch.exp(-(x**2+y**2)/2.0)
+z = (torch.sin(x) * torch.sin(y)) * (torch.exp(-(x**2+y**2)/2.0))
 
 #plot
 import matplotlib.pyplot as plt
