@@ -14,6 +14,9 @@ z = torch.complex(x, y) #important!
 zs = z.clone() #Updated!
 ns = torch.zeros_like(z)
 
+# Julia constant
+c = complex(-0.8, 0.156)
+
 # transfer to the GPU device
 z = z.to(device)
 zs = zs.to(device)
@@ -22,7 +25,9 @@ ns = ns.to(device)
 #Mandelbrot Set
 for i in range(200):
     #Compute the new values of z: z^2 + x
-    zs_ = zs*zs + z
+    ##### Change here for Julia or Mandelbrot #####
+    # zs_ = zs*zs + z 
+    zs_ = zs*zs + c
     #Have we diverged with this new value?
     not_diverged = torch.abs(zs_) < 4.0
     #Update variables to compute
