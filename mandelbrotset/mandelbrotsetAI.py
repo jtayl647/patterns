@@ -1,6 +1,8 @@
 import torch
 import matplotlib.pyplot as plt
 
+# prompt 1: Can you implement the Mandelbrot Set using PyTorch.
+
 # Set device: use GPU if available
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 

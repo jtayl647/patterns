@@ -1,6 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+# prompt 1: Generate a Python script to plot a 2D Gaussian function using Numpy and Matplotlib.
+
 # Define the 2D Gaussian function
 def gaussian_2d(x, y, mu_x=0, mu_y=0, sigma_x=1, sigma_y=1):
     return (1 / (2 * np.pi * sigma_x * sigma_y)) * \
