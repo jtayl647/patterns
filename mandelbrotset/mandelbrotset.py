@@ -10,9 +10,10 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 # step = 0.0005
 
 # My zoomed point.
-x_min, x_max = -1.405, -1.395
-y_min, y_max = -0.005, 0.005
-step = 0.000002 
+# -ives move you left of down, +ives move you right and up.
+x_min, x_max = -1.405, -1.395 # If you reduce the difference then you zoom on x-axis. 
+y_min, y_max = -0.005, 0.005 # If you reduce the difference then you zoom on y-axis.
+step = 0.000002 # This increases the number of points sampled when reduced. 
 
 # Create the grid
 Y, X = np.mgrid[y_min:y_max:step, x_min:x_max:step]
@@ -43,12 +44,16 @@ ns = ns.to(device)
 for i in range(200):
     # Compute the new value of zs for this iteration
     # Mandelbrot: zs^2 + z
+    # Repeatedly square the number and add the point’s value, 
+    # and see whether it stays small or grows out of control.
     zs_ = zs*zs + z  
-    # Julia: uncomment the next line instead of the Mandelbrot line
+    # Julia: fix c and change zs
     # zs_ = zs*zs + c  
 
     # Check which points have not diverged yet
     # A point is considered diverged if its magnitude is >= 4
+    # Larger threshold → more points appear “in the set” before escaping, edges look smoother.
+    # Smaller threshold → more points escape sooner, edges look sharper but may cut off fine details.
     not_diverged = torch.abs(zs_) < 4.0
 
     # Increment the iteration count for points that have not diverged

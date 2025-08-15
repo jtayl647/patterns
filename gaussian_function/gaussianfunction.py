@@ -28,7 +28,8 @@ y = y.to(device)
 # Compute Sine: 2D wave pattern oscillates between -1 and 1.
 # z = (torch.sin(x + y))
 
-# Compute Gabor Filter: diagonal sine waves, strongest at the center, fade out toward the edges.
+# Compute Gabor Filter: diagonal sine waves, strongest at the center, fade out toward the edges. 
+# For feature abstraction and image processing.
 z = (torch.sin(x + y)) * (torch.exp(-(x**2+y**2)/2.0))
 
 #plot
